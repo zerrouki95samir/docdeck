@@ -1,0 +1,93 @@
+{
+  "name": "docdeck",
+  "productName": "DocDeck",
+  "version": "1.0.0",
+  "description": "Universal document workspace: xlsx/xls/csv spreadsheets with formulas, Word (.docx) WYSIWYG editing, and PDF read/annotate — all in tabbed windows",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "author": "DocDeck",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:vite\" \"npm:dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "wait-on tcp:127.0.0.1:5173 && cross-env VITE_DEV=1 electron .",
+    "typecheck": "tsc --noEmit",
+    "webonly": "vite",
+    "build": "vite build",
+    "app": "vite build && electron .",
+    "test:io": "tsx scripts/io.test.ts",
+    "test:pdf": "tsx scripts/pdf.test.ts",
+    "test:docx": "tsx scripts/docx.test.ts",
+    "package": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "@tiptap/extension-color": "^2.27.3",
+    "@tiptap/extension-font-family": "^2.27.3",
+    "@tiptap/extension-highlight": "^2.27.3",
+    "@tiptap/extension-image": "^2.27.3",
+    "@tiptap/extension-link": "^2.27.3",
+    "@tiptap/extension-subscript": "^2.27.3",
+    "@tiptap/extension-superscript": "^2.27.3",
+    "@tiptap/extension-table": "^2.27.3",
+    "@tiptap/extension-table-cell": "^2.27.3",
+    "@tiptap/extension-table-header": "^2.27.3",
+    "@tiptap/extension-table-row": "^2.27.3",
+    "@tiptap/extension-text-align": "^2.27.3",
+    "@tiptap/extension-text-style": "^2.27.3",
+    "@tiptap/extension-underline": "^2.27.3",
+    "@tiptap/pm": "^2.27.3",
+    "@tiptap/react": "^2.27.3",
+    "@tiptap/starter-kit": "^2.27.3",
+    "@univerjs/preset-sheets-conditional-formatting": "^1.2.0",
+    "@univerjs/preset-sheets-core": "^1.2.0",
+    "@univerjs/preset-sheets-data-validation": "^1.2.0",
+    "@univerjs/preset-sheets-filter": "^1.2.0",
+    "@univerjs/preset-sheets-find-replace": "^1.2.0",
+    "@univerjs/presets": "^1.2.0",
+    "docx-preview": "^0.4.1",
+    "exceljs": "^4.4.0",
+    "jszip": "^3.10.2",
+    "papaparse": "^5.7.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.4.299",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/jsdom": "^30.0.0",
+    "@types/papaparse": "^5.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.0.0",
+    "cross-env": "^10.0.0",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.0.0",
+    "jsdom": "^29.1.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.6.0",
+    "vite": "^7.0.0",
+    "wait-on": "^9.0.0"
+  },
+  "build": {
+    "appId": "com.docdeck.app",
+    "productName": "DocDeck",
+    "files": [
+      "dist/**",
+      "electron/**"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "dir"
+      ],
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns"
+    }
+  }
+}
