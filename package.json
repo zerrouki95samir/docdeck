@@ -87,7 +87,17 @@
         "dir"
       ],
       "category": "public.app-category.productivity",
-      "icon": "build/icon.icns"
+      "icon": "build/icon.icns",
+      "fileAssociations": [
+        { "ext": "xlsx", "name": "Spreadsheet", "role": "Editor" },
+        { "ext": "xlsm", "name": "Spreadsheet", "role": "Editor" },
+        { "ext": "xls", "name": "Legacy Spreadsheet", "role": "Editor" },
+        { "ext": "csv", "name": "CSV", "role": "Editor" },
+        { "ext": "tsv", "name": "TSV", "role": "Editor" },
+        { "ext": "uni", "name": "DocDeck Snapshot", "role": "Editor" },
+        { "ext": "docx", "name": "Word Document", "role": "Editor" },
+        { "ext": "pdf", "name": "PDF", "role": "Viewer" }
+      ]
     }
   }
 }
